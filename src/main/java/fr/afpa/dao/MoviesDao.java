@@ -55,13 +55,14 @@ public class MoviesDao extends Dao<Film> {
         ArrayList<Film> films = new ArrayList<>();
         try {
             Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("select * from movie");
+            ResultSet result = statement.executeQuery("select * from movie order by id");
             while (result.next()) {
                 String title = result.getString("title");
                 Date publiDate = result.getDate("publiDate");
                 int id = result.getInt("id");
+                String imgPath = result.getString("image_path");
 
-                Film film = new Film(title, publiDate, id);
+                Film film = new Film(title, publiDate, id, imgPath);
                 films.add(film);
             }
         } catch (SQLException e) {
@@ -96,25 +97,4 @@ public class MoviesDao extends Dao<Film> {
             throw new RuntimeException(e);
         }
     }
-
-
-/*    public ArrayList<Film> findById(ArrayList<Integer> moviesId){
-
-        int listLengt = moviesId.size();
-        ArrayList<Playlist> playlists = new ArrayList<>();
-        try{
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select * from movies where id in (" + listLengt + ")");
-            while(resultSet.next()){
-                int movieId = resultSet.getInt("id");
-
-                Playlist playlist = new Playlist(movieId);
-                playlists.add(playlist);
-                System.out.println(playlist);
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return playlists;
-    }*/
 }

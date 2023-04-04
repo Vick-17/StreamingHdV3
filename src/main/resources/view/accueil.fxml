@@ -1,35 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Label fx:id="labelTitle" layoutX="165.0" layoutY="38.0" text="Selectionnez le film de votre choix">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <AnchorPane layoutX="34.0" layoutY="132.0" prefHeight="200.0" prefWidth="495.0">
+<BorderPane id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.afpa.controller.ControllerAccueil">
+   <top>
+      <HBox BorderPane.alignment="CENTER">
          <children>
-            <HBox fx:id="hbox1" layoutY="-1.0" prefHeight="232.0" prefWidth="144.0" />
-            <HBox fx:id="hbox2" layoutX="133.0" layoutY="2.0" prefHeight="231.0" prefWidth="144.0" />
-            <HBox fx:id="hbox3" layoutX="251.0" prefHeight="233.0" prefWidth="144.0" />
-            <HBox fx:id="hbox4" layoutX="389.0" prefHeight="233.0" prefWidth="144.0" />
+            <GridPane HBox.hgrow="ALWAYS">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" />
+                <ColumnConstraints hgrow="SOMETIMES" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <HBox spacing="60.0" style="-fx-alignment: center;" GridPane.columnIndex="1">
+                     <children>
+                        <Button contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: none;" text="Film">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" style="-fx-background-color: none;" text="Serie">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" style="-fx-background-color: none;" text="Livre">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" style="-fx-background-color: none;" text="Mon compte">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <Label alignment="CENTER" text="Watchify">
+                     <font>
+                        <Font name="System Bold" size="30.0" />
+                     </font>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                     <GridPane.margin>
+                        <Insets bottom="20.0" left="20.0" top="20.0" />
+                     </GridPane.margin>
+                  </Label>
+               </children>
+            </GridPane>
          </children>
-      </AnchorPane>
-      <Button fx:id="thriller" layoutX="148.0" layoutY="91.0" mnemonicParsing="false" text="Thriller" />
-      <Button fx:id="comedie" layoutX="208.0" layoutY="91.0" mnemonicParsing="false" text="Comédie" />
-      <Button fx:id="charme" layoutX="280.0" layoutY="91.0" mnemonicParsing="false" text="Charme" />
-      <Button fx:id="action" layoutX="346.0" layoutY="91.0" mnemonicParsing="false" text="Action" />
-      <Label fx:id="labelCategorie" layoutX="34.0" layoutY="93.0" text="Catégories   &gt;">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-   </children>
-</AnchorPane>
+      </HBox>
+   </top>
+   <center>
+      <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+         <columnConstraints>
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="698.0" minWidth="10.0" prefWidth="639.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="804.0" minWidth="0.0" prefWidth="640.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="0.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="393.0" minHeight="10.0" prefHeight="370.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <VBox alignment="CENTER" GridPane.rowIndex="1">
+               <children>
+                  <Text disable="true" strokeType="OUTSIDE" strokeWidth="0.0" text="Decouvrer. Ajouter. Commenter" wrappingWidth="437.89453125">
+                     <font>
+                        <Font name="Gill Sans MT" size="40.0" />
+                     </font>
+                  </Text>
+                  <Text disable="true" layoutX="10.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Watchify vous permet de vous créer une playlist de film, serie, livre ou autre que vous avez envie de regarder, lire, et d'ensuite donner un avis dessus en le partagent a la communauté" wrappingWidth="428.89453125">
+                     <font>
+                        <Font name="Arial" size="20.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
+            <ImageView fitHeight="372.0" fitWidth="496.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@../img/WelcomeImg.png" />
+               </image>
+            </ImageView>
+         </children>
+      </GridPane>
+   </center>
+   <bottom>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox fx:id="card1" prefHeight="200.0" prefWidth="100.0" />
+            <VBox fx:id="card2" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" />
+            <VBox fx:id="card3" layoutX="110.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" />
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>

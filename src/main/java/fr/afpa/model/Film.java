@@ -8,16 +8,18 @@ public class Film {
     private String titre;
     private Date dateSortie;
     private int id;
+    private String imgPath;
     private List<Acteur> listActeur;
     
     public Film(String titre) {
         this.titre = titre;
     }
 
-    public Film(String titre, Date dateSortie, int id) {
+    public Film(String titre, Date dateSortie, int id, String imgPath) {
         this.titre = titre;
         this.dateSortie = dateSortie;
         this.id = id;
+        this.imgPath = imgPath;
     }
 
     public Film(String titre, Date dateSortie, int id, List<Acteur> listActeur) {
@@ -29,6 +31,14 @@ public class Film {
 
     public Film() {
 
+    }
+
+    public String getImgPath() {
+        return imgPath;
+    }
+
+    public void setImgPath(String imgPath) {
+        this.imgPath = imgPath;
     }
 
     public String getTitre() {

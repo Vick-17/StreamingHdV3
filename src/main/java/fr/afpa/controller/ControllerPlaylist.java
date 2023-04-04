@@ -37,6 +37,8 @@ public class ControllerPlaylist {
     private Button btnAddMoviesBdd;
     @FXML
     private Button btnUpdate;
+    @FXML
+    private Button btnGoActor;
     MoviesDao moviesDao = new MoviesDao();
     PlaylistDao playlistDao = new PlaylistDao();
 
@@ -48,6 +50,7 @@ public class ControllerPlaylist {
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Streaming");
         stage.setScene(scene);
+        stage.setMaximized(true);
     }
     @FXML
     public void goToFormAdd() throws IOException {
@@ -55,6 +58,14 @@ public class ControllerPlaylist {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/view/ajoutFilm.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Add movies");
+        stage.setScene(scene);
+    }
+    @FXML
+    public void goToActor() throws IOException {
+        Stage stage = HelloApplication.stage;
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/view/ajoutActor.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Add Actor");
         stage.setScene(scene);
     }
 
