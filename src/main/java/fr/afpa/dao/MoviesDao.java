@@ -55,7 +55,7 @@ public class MoviesDao extends Dao<Film> {
         ArrayList<Film> films = new ArrayList<>();
         try {
             Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("select * from movie order by id");
+            ResultSet result = statement.executeQuery("select * from movie");
             while (result.next()) {
                 String title = result.getString("title");
                 Date publiDate = result.getDate("publiDate");
@@ -72,7 +72,7 @@ public class MoviesDao extends Dao<Film> {
 
     }
 
-    public Film getMovieById(int movieId) throws SQLException {
+/*    public Film getMovieById(int movieId) throws SQLException {
         String query = "SELECT * FROM movie WHERE id = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         preparedStatement.setInt(1, movieId);
@@ -84,7 +84,7 @@ public class MoviesDao extends Dao<Film> {
         } else {
             return null;
         }
-    }
+    }*/
 
     public void updateMovie(int moviesId, String title, Date publiDate ){
         try {

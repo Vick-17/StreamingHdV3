@@ -30,38 +30,18 @@ public class PlaylistDao extends Dao<Playlist> {
         statement.executeUpdate();
     }
 
-    public List<Playlist> findByUserID(int userId){
-        List<Playlist> playlists = new ArrayList<>();
-
-        try{
-            PreparedStatement movieStatement = connection.prepareStatement("select moviesId from playlist where userId = ?");
-            movieStatement.setInt(1, userId);
-
-            ResultSet result = movieStatement.executeQuery();
-            while (result.next()){
-                Playlist playlist = new Playlist();
-                playlist.setUserId(result.getInt("userId"));
-                playlist.setMovieId(result.getInt("moviesId"));
-                playlists.add(playlist);
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return playlists;
-    }
-
     public ArrayList<Film> getFilmsForUser(int userId) {
 
         ArrayList<Film> movies = new ArrayList<>();
 
         try (
-                PreparedStatement statement = connection.prepareStatement("SELECT * FROM playlist WHERE userId = ?;    ")) {
+                PreparedStatement statement = connection.prepareStatement("SELECT * FROM playlist WHERE userId = ?;")) {
             statement.setInt(1, userId);
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
                 int movieId = resultSet.getInt("movieId");
-                Film movie = moviesDao.getMovieById(movieId);
+                Film movie = moviesDao.find(movieId);
                 movies.add(movie);
             }
         } catch (SQLException e) {

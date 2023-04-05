@@ -1,13 +1,14 @@
 package fr.afpa.controller;
 
+import fr.afpa.dao.GameDao;
 import fr.afpa.dao.MoviesDao;
+import fr.afpa.model.Card;
 import fr.afpa.model.Film;
+import fr.afpa.model.Game;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.io.File;
@@ -27,23 +28,22 @@ public class ControllerAccueil {
     private VBox card2;
     @FXML
     private VBox card3;
+    @FXML
+    private HBox hboxMovies;
     MoviesDao moviesDao = new MoviesDao();
+    GameDao gameDao = new GameDao();
     ArrayList<Film> films;
+    ArrayList<Game> games;
 
     @FXML
     public void initialize(){
         films = moviesDao.findAll();
+        games = gameDao.findAll();
         for (int i = 0; i < 3; i++){
-            File file = new File("C:\\Users\\Happy\\.imgStreaming\\" + films.get(i).getImgPath());
-            Image image = new Image(file.toURI().toString());
-            ImageView imageView = new ImageView();
-            Label label = new Label();
-            label.setText(films.get(i).getTitre());
-            imageView.setImage(image);
-            imageView.setPreserveRatio(true);
-            imageView.setFitWidth(300);
-            card1.getChildren().add(imageView);
-            card1.getChildren().add(label);
+        Card cardMovie = new Card(films.get(i));
+            hboxMovies.getChildren().add(cardMovie);
+        Card cardGame = new Card(games.get(i));
+            hboxMovies.getChildren().add(cardGame);
         }
     }
 }
